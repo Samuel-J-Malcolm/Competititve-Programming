@@ -3,7 +3,7 @@ d = int(d)
 goal = int(g)
 out = ""
 mins = []
-maxs  = []
+maxs  = [] 
 real = []
 for i in range(d):
     min, max = input().split()
@@ -17,6 +17,7 @@ else:
     while sum(real) < goal:
         real[idx] = maxs[idx]
         idx+=1
-    real[idx -1] += goal-sum(real)
+    real[idx -1] += goal-sum(real) 
+    
     print("YES")
     print(*real,sep=" ")
