@@ -1,6 +1,6 @@
 /*
 
-
+    Rating: 1000
 */
 
 #include <bits/stdc++.h>

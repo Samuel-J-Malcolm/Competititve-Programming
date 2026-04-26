@@ -38,7 +38,22 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    
+    int len = 0;
+    cin >> len;
+    bool w = false;
+    int l = 0;
+    while(len--){
+        cin >> l;
+        if(l == 100){
+            w = true;
+        }
+    }
+    if(w){
+        cout << "Yes\n";
+    }
+    else{
+        cout << "No\n";
+    }
 }
 
 int main()
