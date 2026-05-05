@@ -1,0 +1,90 @@
+/*
+
+
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+using ll  = long long;
+using ull = unsigned long long;
+using ld  = long double;
+
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using pil = pair<int, ll>;
+
+using vi  = vector<int>;
+using vll = vector<ll>;
+using vvi = vector<vi>;
+using vvll = vector<vll>;
+
+// Macros
+#define pb    push_back
+#define eb    emplace_back
+#define mp    make_pair
+#define fi    first
+#define se    second
+#define all(x)  (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x)   (int)(x).size()
+#define rep(i, a, b) for (int i = (a); i < (b); i++)
+
+using str = string;
+
+
+// Constants
+const ll INF  = 1e18;
+const int INF32 = 1e9;
+const ld  EPS = 1e-9;
+const ll  MOD = 1e9 + 7;
+
+template <typename T, typename F>
+int binSearch(vector<T>& ls,F check){
+    int sz = size(ls);
+    int l = 0;
+    int r = sz;
+    while(r>l){
+        int m = (l+r)/2;
+        if(check(ls[m])){
+            r = m;
+        }
+        else{
+            l = m+1;
+        }
+    }
+    if(l == sz){
+        return -1;
+    }
+    if(l == 0 && !check(ls[0])){
+        return -1;
+    }
+    return l;
+}
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int l = 1;
+    cin >> l;
+    vi v(l);
+    for(auto& i: v){
+        cin >> i;
+    }
+    sort(all(v));
+    cin >> l;
+    rep(i,0,l){
+        int d;
+        cin >> d;
+        auto check = [&](int x) {
+            return d >= x;
+        };
+        int x = binSearch(v,check);
+        cout << (l-x) << "\n";
+    }
+
+    return 0;
+}
