@@ -42,13 +42,24 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    ll l;
     cin >> l;
-    vi v(l);
+    vll v(l);
     for(auto& x: v){
         cin >> x;
     }
-    
+    ll prev = 3;
+    rep(i,0,l){
+        if(v[i] == 1){
+            v[i]++;
+        }
+        if(v[i] % prev == 0){
+            v[i]++;
+        }
+        prev = v[i];
+        cout << v[i] << " ";
+    }
+    cout << "\n";
 
 }
 

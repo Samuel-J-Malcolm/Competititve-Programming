@@ -42,14 +42,53 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
+    vi v;
     int l;
+    str s;
     cin >> l;
-    vi v(l);
-    for(auto& x: v){
-        cin >> x;
-    }
-    
+    cin >> s;
+    int cur = 0;
+    bool prev0 = true;
+    bool prev00 = true; 
+    rep(i,0,l){
+        if(s[i] == '0'){
+            if(prev00){
+                int a = 1;
+            }
+            else if(prev0){
+                v.emplace_back(cur-1);
+                cur = 0;
 
+                prev00 = true;
+            }
+            else{
+                prev0 = true;
+                cur++;
+            }
+        }
+        else{
+            prev0 = false;
+            prev00 = false;
+            cur++;
+        }
+    }
+    if(prev00){
+        int a = 1;
+    }
+    else if(prev0){
+        v.emplace_back(cur-1);
+    }
+    else{
+        v.emplace_back(cur);
+
+    }
+    int min = 0;
+    int max = 0;
+    for(int i: v){
+        min += (i+2) / 2;
+        max += i;
+    }
+    cout << min << " " << max << "\n";
 }
 
 int main()

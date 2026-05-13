@@ -42,14 +42,28 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    int l = 0;
     cin >> l;
-    vi v(l);
-    for(auto& x: v){
-        cin >> x;
+    str s1 = "";
+    str s2 = s1;
+    rep(i,0,2*l-2){
+        str in = "";
+        cin >> in;
+        if(sz(in) == l-1){
+            if(s1 == ""){
+                s1 = in;
+                reverse(all(s1));
+            }
+            else{
+                if(s1 == in){
+                    cout << "YES\n";
+                }
+                else{
+                    cout << "NO\n";
+                }
+            }
+        }
     }
-    
-
 }
 
 int main()

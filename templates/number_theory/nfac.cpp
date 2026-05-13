@@ -40,27 +40,36 @@ const int INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-void solve()
-{
-    int l;
-    cin >> l;
-    vi v(l);
-    for(auto& x: v){
-        cin >> x;
+ll nfac(auto n){
+    ll facs = 1;
+    ll facCur = 3;
+    ll cVal = 0;
+    while(n % 2 == 0){
+        facs++;
+        n /= 2;
     }
+    while(n > facCur * facCur){
+        cVal = 1;
+        while(n % facCur == 0){
+            cVal++;
+            n /= facCur;
+        }
+        facs *= (cVal);
+        facCur += 2;
+    }
+    if(n != 1){
+        facs *= 2;
+    }
+    return facs;
     
-
 }
-
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
-    int t = 1;
+    int t = 0;
     cin >> t;
-    while (t--)
-        solve();
-
+    cout << nfac(t);
     return 0;
 }
+

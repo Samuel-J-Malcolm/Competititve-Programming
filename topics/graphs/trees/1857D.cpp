@@ -42,13 +42,34 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    int l = 0;
     cin >> l;
-    vi v(l);
-    for(auto& x: v){
+    vll a(l);
+    vll v(l);
+    for(auto&x: a){
         cin >> x;
     }
-    
+    ll m = -1e11;
+    int count = 1;
+    rep(i,0,l){
+        cin >> v[i];
+        v[i] = a[i] - v[i];
+        if(v[i] > m){
+            count = 1;
+            m = v[i];
+        }
+        else if(v[i] == m){
+            count++;
+        }
+        
+    }
+    cout << count << "\n";
+    rep(i,0,l){
+        if(v[i] == m){
+            cout << i+1 << " ";
+        }
+    }
+    cout << "\n";
 
 }
 

@@ -2,13 +2,16 @@
 using namespace std;
 
 template <typename T, typename F>
-int binSearch(vector<T>& ls,F check){
+int firstTrue(vector<T>& ls, auto x){
+    bool check(auto in, auto x){
+        retur true;
+    }
     int sz = size(ls);
     int l = 0;
     int r = sz;
     while(r>l){
         int m = (l+r)/2;
-        if(check(ls[m])){
+        if(check(ls[m],x)){
             r = m
         }
         else{
@@ -17,6 +20,26 @@ int binSearch(vector<T>& ls,F check){
     }
     if(l == sz){
         return -1;
+    }
+    return l;
+}
+
+template <typename T, typename F>
+int lastTrue(vector<T>& ls,auto x){
+        bool check(auto in, auto x){
+        retur true;
+    }
+    int sz = size(ls);
+    int l = -1;
+    int r = sz-1;
+    while(r>l){
+        int m = (l+r+1)/2;
+        if(check(ls[m])){
+            l=m;
+        }
+        else{
+            r=m-1;
+        }
     }
     return l;
 }

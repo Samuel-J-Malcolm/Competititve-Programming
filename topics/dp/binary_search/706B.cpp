@@ -40,16 +40,21 @@ const int INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-void solve()
-{
-    int l;
-    cin >> l;
-    vi v(l);
-    for(auto& x: v){
-        cin >> x;
+template <typename T, typename F>
+int lastTrue(vector<T>& ls,F check){
+    int sz = size(ls);
+    int l = -1;
+    int r = sz-1;
+    while(r>l){
+        int m = (l+r+1)/2;
+        if(check(ls[m])){
+            l=m;
+        }
+        else{
+            r=m-1;
+        }
     }
-    
-
+    return l;
 }
 
 int main()
@@ -57,10 +62,23 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int t = 1;
-    cin >> t;
-    while (t--)
-        solve();
+    int l = 1;
+    cin >> l;
+    vi v(l);
+    for(auto& i: v){
+        cin >> i;
+    }
+    sort(all(v));
+    cin >> l;
+    rep(i,0,l){
+        int d;
+        cin >> d;
+        auto check = [&](int x) {
+            return x <= d;
+        };
+        int x = lastTrue(v,check);
+        cout << x+1 << "\n";
+    }
 
     return 0;
 }

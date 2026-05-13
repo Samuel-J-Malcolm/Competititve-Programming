@@ -42,14 +42,20 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    int l = 0;
     cin >> l;
-    vi v(l);
+    vll v(l);
     for(auto& x: v){
         cin >> x;
     }
-    
-
+    rep(i,0,l){
+        ll sum = l;
+        rep(j,0,l){
+            sum += abs(v[i]-v[j]);
+        }
+        cout << sum << " ";
+    }
+    cout << "\n";
 }
 
 int main()

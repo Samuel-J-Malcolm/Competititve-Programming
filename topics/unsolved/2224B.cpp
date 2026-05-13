@@ -42,14 +42,49 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    ll l;
     cin >> l;
-    vi v(l);
-    for(auto& x: v){
-        cin >> x;
+    vll v;
+    set<ll> s;
+    ll dupes = 0;
+    ll input;
+    ll maxi = 0;
+    rep(i,0,l){
+        cin >> input;
+        if(s.count(input)){
+            dupes++;
+        }
+        else{
+            maxi = max(input,maxi);
+            v.push_back(input);
+            s.emplace(input);
+        }
     }
-    
-
+    ull mex = 0;
+    ll sum = 0;
+    ll s1 = sz(v);
+    sort(all(v));
+    rep(i,0,s1){
+        input = v[i];
+    //    cout << input << " ";
+        if(mex == input){
+            mex++; 
+        }
+        else{
+            break;
+        }
+    }
+    sum += (mex*(mex+1))/2;
+    if(maxi == mex){
+        mex++;
+    }
+    sum += mex * (l-mex);
+    sum += l*maxi;
+    if(mex == 2){
+        sum--;
+    }
+    cout << sum;
+    cout << "\n";
 }
 
 int main()

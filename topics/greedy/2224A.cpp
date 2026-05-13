@@ -44,12 +44,21 @@ void solve()
 {
     int l;
     cin >> l;
-    vi v(l);
-    for(auto& x: v){
-        cin >> x;
+    vll v(l);
+    for(auto& i: v){
+        cin >> i;
     }
-    
-
+    bool pos = false;
+    int n = 0;
+    for(int i = l-1;i>-1;i--){
+        if(i != l-1 && v[i+1] > 0){
+            v[i] += v[i+1]; 
+        }
+        if(v[i] > 0){
+            n++;
+        }
+    }
+    cout<< n << "\n";
 }
 
 int main()

@@ -42,13 +42,49 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    int l = 0;
+    str s1,s2;
     cin >> l;
-    vi v(l);
-    for(auto& x: v){
-        cin >> x;
+    cin >> s1;
+    cin >> s2;
+    pii m1 = {0,0};
+    rep(i,0,l){
+        char c1 = s1[i];
+        char c2 = s2[i];
+        if(c1 == c2){
+            if(c1 == '('){
+                m1.fi += 1;
+                m1.se += 1;
+            }else{
+                m1.fi -= 1;
+                m1.se -= 1;
+            }
+            
+        }
+        if(c1 != c2){
+            if(m1.se == m1.fi){
+                m1.se--;
+                m1.fi++;
+            }
+            else{
+                m1.se++;
+                m1.fi--;
+            }
+        }
+        if(m1.fi < m1.se){
+            cout << "ERR";
+        }
+        if(m1.se < 0){
+            cout << "NO\n";
+            return;
+        }    
+        
     }
-    
+    if(m1.se == 0 && m1.fi == 0){
+            cout << "YES\n";
+            return;
+        }    
+    cout << "NO\n";
 
 }
 
