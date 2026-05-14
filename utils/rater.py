@@ -1,6 +1,6 @@
 import requests
 
-contest_id = 1794
+contest_id = int(input("Contest? "))
 url = f"https://codeforces.com/api/contest.standings?contestId={contest_id}"
 response = requests.get(url).json()
 rows = response["result"]["rows"]
