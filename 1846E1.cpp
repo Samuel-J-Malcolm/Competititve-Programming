@@ -42,11 +42,28 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    ll l;
     cin >> l;
-    vi v(l);
-   
-    
+    ll i = 2;
+    while((i+1)*i <= l){
+        if(l % i != 1){
+            i++;
+            continue;
+        }
+
+        ll c = 1 + i + i*i;
+        ll j = 3;
+        while(c < l){
+            c *= i;
+            c += 1;
+        }
+        if(c==l){
+            cout << "YES\n";
+            return;
+        }
+        i++;
+    }
+    cout << "NO\n";
 
 }
 
